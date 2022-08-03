@@ -40,7 +40,7 @@
                     </div>
                     <input
                       class="form-control"
-                      placeholder="Usuario"
+                      placeholder="C.I"
                       type="text"
                       (focus)="focus = true"
                       (blur)="focus = false"
@@ -89,7 +89,12 @@
           <div class="row mt-3">
             <div class="col-6">
               <a href="javascript:void(0)" class="text-light">
-                <small>Olvidaste la contraseña? Cagaste master</small>
+                <small>Olvidaste la contraseña?</small>
+              </a>
+            </div>
+            <div class="col-6 text-right">
+              <a routerLink="/register" class="text-light">
+                <small>Registrate ahora!</small>
               </a>
             </div>
           </div>
