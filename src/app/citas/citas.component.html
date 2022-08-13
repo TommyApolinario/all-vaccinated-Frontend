@@ -24,82 +24,128 @@
     </svg>
   </div>
 
-  <div class="text-center text-muted mb-4">
-    <h1 class="display-3">Agenda tu cita aqui!</h1>
-  </div>
+  <div class="text-center text-muted mb-4"></div>
 
-  <div class="card-body px-lg-5 py-lg-5">
-    <div class="text-center text-muted mb-4">
-      <div class="container">
-        <div class="card-header bg-white pb-3">
-          <div class="row">
-            <div class="col">
-              <h5>Fecha de la cita.</h5>
-              <span
-                ><div
-                  class="form-group"
-                  [ngClass]="{ focused: focus2 === true }"
-                >
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"
-                        ><i class="ni ni-calendar-grid-58"></i
-                      ></span>
-                    </div>
-                    <input
-                      class="form-control datepicker"
-                      placeholder="Seleciona una fecha"
-                      name="dp"
-                      [(ngModel)]="model"
-                      ngbDatepicker
-                      #d="ngbDatepicker"
-                      (click)="d.toggle()"
-                      (focus)="focus2 = true"
-                      (blur)="focus2 = false"
-                      type="text"
-                      autocomplete="off"
-                    />
-                  </div></div
-              ></span>
-            </div>
-            <div class="col">
-              <h5>Selecciona que tipo de vacuna necesitas.</h5>
-              <span>
-                <div class="form-group">
-                  <input
-                    type="text"
-                    placeholder="Regular"
-                    class="form-control form-control-alternative"
-                    disabled=""
-                  /></div
-              ></span>
-            </div>
-            <div class="w-100"></div>
-            <div class="col">
-              <h5>Nombre del paciente.</h5>
-              <span>
-                <div class="form-group">
-                  <input
-                    type="text"
-                    placeholder="Regular"
-                    class="form-control form-control-alternative"
-                    disabled=""
-                  /></div
-              ></span>
-            </div>
-            <div class="col">
-              <h5>Fecha de nacimiento.</h5>
-              <span>
-                <div class="form-group">
-                  <input
-                    type="text"
-                    placeholder="Regular"
-                    class="form-control form-control-alternative"
-                    disabled=""
-                  /></div
-              ></span>
-            </div>
-          </div>
+  <div class="container">
+    <div class="card-header bg-white pb-3">
+      <h1 class="display-3 text-center">Agenda tu cita aqui!</h1>
+      <div class="row">
+        <div class="col">
+          <h6>Fecha de la cita.</h6>
+          <span
+            ><div class="form-group" [ngClass]="{ focused: focus2 === true }">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="ni ni-calendar-grid-58"></i
+                  ></span>
+                </div>
+                <input
+                  class="form-control datepicker"
+                  placeholder="Seleciona una fecha"
+                  name="dp"
+                  [(ngModel)]="model"
+                  ngbDatepicker
+                  #d="ngbDatepicker"
+                  (click)="d.toggle()"
+                  (focus)="focus2 = true"
+                  (blur)="focus2 = false"
+                  type="text"
+                  autocomplete="off"
+                />
+              </div></div
+          ></span>
+        </div>
+        <div class="col">
+          <h6>Selecciona que tipo de vacuna necesitas.</h6>
+          <span>
+            <input
+              class="form-control"
+              list="datalistOptions"
+              id="exampleDataList"
+              placeholder="Selecciona una Vacuna" />
+            <datalist id="datalistOptions">
+              <option value="San Francisco"></option>
+              <option value="New York"></option>
+              <option value="Seattle"></option>
+              <option value="Los Angeles"></option>
+              <option value="Chicago"></option></datalist
+          ></span>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+          <h6>Nombre del paciente.</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Regular"
+                class="form-control form-control-alternative"
+                disabled=""
+              /></div
+          ></span>
+        </div>
+        <div class="col">
+          <h6>Fecha de nacimiento.</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Regular"
+                class="form-control form-control-alternative"
+                disabled=""
+              /></div
+          ></span>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+          <h6>Nombre del paciente.</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Regular"
+                class="form-control form-control-alternative"
+                disabled=""
+              /></div
+          ></span>
+        </div>
+        <div class="col">
+          <h6>Fecha de nacimiento.</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Regular"
+                class="form-control form-control-alternative"
+                disabled=""
+              /></div
+          ></span>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+          <h6>Nombre del paciente.</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Regular"
+                class="form-control form-control-alternative"
+                disabled=""
+              /></div
+          ></span>
+        </div>
+        <div class="col">
+          <h6>Fecha de nacimiento.</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Regular"
+                class="form-control form-control-alternative"
+                disabled=""
+              /></div
+          ></span>
         </div>
       </div>
     </div>
