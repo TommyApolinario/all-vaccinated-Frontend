@@ -8,6 +8,13 @@ import { NgbDate, NgbCalendar } from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ["./citas.component.css"],
 })
 export class CitasComponent implements OnInit {
+  onRenderCell(args) {
+    /*Apply selected format to the component*/
+    if (args.date.getDay() == 0 || args.date.getDay() == 6) {
+      //sets isDisabled to true to disable the date.
+      args.isDisabled = true;
+    }
+  }
   test: Date = new Date();
   focus;
   focus1;
