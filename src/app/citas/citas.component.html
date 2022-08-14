@@ -28,56 +28,67 @@
 
   <div class="container">
     <div class="card-header bg-white pb-3">
-      <h1 class="display-3 text-center">Agenda tu cita aqui!</h1>
+      <h1 class="display-3 text-center">Agenda tu cita aquí!</h1>
       <div class="row">
         <div class="col">
           <h6>Fecha de la cita.</h6>
-          <span></span>
-        </div>
-        <div class="col">
-          <h6>Selecciona que tipo de vacuna necesitas.</h6>
-          <span>
+          <div class="input-group input-group-alternative">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="ni ni-calendar-grid-58"></i
+              ></span>
+            </div>
             <input
-              class="form-control"
-              list="datalistOptions"
-              id="exampleDataList"
-              placeholder="Selecciona una Vacuna" />
-            <datalist id="datalistOptions">
-              <option value="San Francisco"></option>
-              <option value="New York"></option>
-              <option value="Seattle"></option>
-              <option value="Los Angeles"></option>
-              <option value="Chicago"></option></datalist
+              class="form-control datepicker"
+              placeholder="Seleciona una fecha"
+              name="dp"
+              [(ngModel)]="model"
+              ngbDatepicker
+              #d="ngbDatepicker"
+              (click)="d.toggle()"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="col">
+          <h6>Selecciona la hora de la cita</h6>
+          <div class="default-time-example">
+            <input [ngxTimepicker]="picker" class="form-control" />
+            <ngx-material-timepicker #picker></ngx-material-timepicker>
+          </div>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+          <h6>Seleccione el tipo de vacuna.</h6>
+          <input
+            class="form-control"
+            list="datalistOptions"
+            id="exampleDataList"
+            placeholder="Selecciona una Vacuna"
+          />
+          <datalist id="datalistOptions">
+            <option value="San Francisco"></option>
+            <option value="New York"></option>
+            <option value="Seattle"></option>
+            <option value="Los Angeles"></option>
+            <option value="Chicago"></option>
+          </datalist>
+        </div>
+        <div class="col">
+          <h6>Descripción de la vacuna</h6>
+          <span>
+            <div class="form-group">
+              <textarea
+                class="form-control form-control-alternative"
+                rows="2"
+                placeholder="La Descripcion se mostrara aqui"
+                disabled=""
+              ></textarea></div
           ></span>
         </div>
         <div class="w-100"></div>
         <div class="col">
-          <h6>Nombre del paciente.</h6>
-          <span>
-            <div class="form-group">
-              <input
-                type="text"
-                placeholder="Nombre"
-                class="form-control form-control-alternative"
-                disabled=""
-              /></div
-          ></span>
-        </div>
-        <div class="col">
-          <h6>Fecha de nacimiento.</h6>
-          <span>
-            <div class="form-group">
-              <input
-                type="text"
-                placeholder="DD/MM/AA"
-                class="form-control form-control-alternative"
-                disabled=""
-              /></div
-          ></span>
-        </div>
-        <div class="w-100"></div>
-        <div class="col">
-          <h6>Correlo Electronico</h6>
+          <h6>Nombres del paciente</h6>
           <span>
             <div class="form-group">
               <input
@@ -89,12 +100,37 @@
           ></span>
         </div>
         <div class="col">
-          <h6>Residencia.</h6>
+          <h6>Identificación</h6>
           <span>
             <div class="form-group">
               <input
-                type="text"
+                type="number"
                 placeholder="Regular"
+                class="form-control form-control-alternative"
+                disabled=""
+              /></div
+          ></span>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+          <h6>Correo electrónico</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="email"
+                placeholder="example@gmail.com"
+                class="form-control form-control-alternative"
+                disabled=""
+              /></div
+          ></span>
+        </div>
+        <div class="col">
+          <h6>Teléfono</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="number"
+                placeholder="04984065454"
                 class="form-control form-control-alternative"
                 disabled=""
               /></div
@@ -102,7 +138,51 @@
         </div>
       </div>
       <div class="text-center">
-        <button type="button" class="btn btn-outline-success">Agendar</button>
+        <button
+          class="btn btn-block btn-warning mb-3"
+          (click)="open(classic2, 'Notification', '')"
+        >
+          Agendar
+        </button>
+        <ng-template #classic2 let-c="close" let-d="dismiss">
+          <div class="modal-content bg-gradient-danger">
+            <div class="modal-header">
+              <h6 class="modal-title" id="modal-title-notification">
+                Atencion!
+              </h6>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                (click)="d('Cross click')"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="py-3 text-center">
+                <i class="ni ni-bell-55 ni-3x"></i>
+                <h4 class="heading mt-4">Recuerda esto antes de angendar!</h4>
+                <p>
+                  Al realizar una cita te comprometes a cumplir el horario que
+                  el usuario establece.
+                </p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-white">Ok, Está bien</button>
+              <button
+                type="button"
+                class="btn btn-link text-white ml-auto"
+                data-dismiss="modal"
+                (click)="c('Close click')"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>

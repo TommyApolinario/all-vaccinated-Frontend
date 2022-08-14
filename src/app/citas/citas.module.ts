@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CitasComponent } from "./citas.component";
-import { SectionsComponent } from "../sections/sections.component";
+
 import { SharedModule } from "../shared/shared.module";
 import { SectionsModule } from "../sections/sections.module";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
-import { DateTimePickerModule } from "@syncfusion/ej2-angular-calendars";
+import { CitasComponent } from "./citas.component";
+import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 
 @NgModule({
   declarations: [CitasComponent],
@@ -16,7 +16,7 @@ import { DateTimePickerModule } from "@syncfusion/ej2-angular-calendars";
     SectionsModule,
     FormsModule,
     NgbModule,
-    DateTimePickerModule,
+    NgxMaterialTimepickerModule,
   ],
 })
 export class CitasModule {}
