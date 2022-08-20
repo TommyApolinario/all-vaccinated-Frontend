@@ -14,6 +14,7 @@ import { HomeComponent } from "./home/home.component";
 import { HomeModule } from "./home/home.module";
 import { LoginComponent } from "./login/login.component";
 import { SharedModule } from "./shared/shared.module";
+import { VacunarComponent } from './vacunar/vacunar.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SharedModule } from "./shared/shared.module";
     LandingComponent,
     ProfileComponent,
     LoginComponent,
+    VacunarComponent,
   ],
   imports: [
     BrowserModule,

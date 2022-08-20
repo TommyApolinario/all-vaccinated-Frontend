@@ -52,11 +52,7 @@
           </a>
           <div class="dropdown-menu-xl dropdown-menu">
             <div class="dropdown-menu-inner">
-              <a
-                routerLinkActive="active"
-                [routerLink]="['documentation/tutorial']"
-                class="media d-flex align-items-center"
-              >
+              <a class="media d-flex align-items-center">
                 <div
                   class="icon icon-shape bg-gradient-primary rounded-circle text-white"
                 >
@@ -75,11 +71,7 @@
                   </p>
                 </div>
               </a>
-              <a
-                routerLinkActive="active"
-                [routerLink]="['documentation/colors']"
-                class="media d-flex align-items-center"
-              >
+              <a class="media d-flex align-items-center">
                 <div
                   class="icon icon-shape bg-gradient-success rounded-circle text-white"
                 >
@@ -134,10 +126,15 @@
                 <div
                   class="icon icon-shape bg-gradient-primary rounded-circle text-white"
                 >
-                  <i class="bi bi-calendar-heart-fill"></i>
+                  <i class="bi bi-hospital"></i>
                 </div>
                 <div class="media-body ml-3">
-                  <h6 class="heading text-primary mb-md-1">Vacunar</h6>
+                  <h6
+                    class="heading text-primary mb-md-1"
+                    routerLink="/vacunar"
+                  >
+                    Vacunar
+                  </h6>
                   <p class="description d-none d-md-inline-block mb-0">
                     Vacuna a un paciente ahora!.
                   </p>
@@ -151,7 +148,7 @@
                 <div
                   class="icon icon-shape bg-gradient-success rounded-circle text-white"
                 >
-                  <i class="bi bi-clipboard-pulse"></i>
+                  <i class="bi bi-clipboard2-heart"></i>
                 </div>
                 <div class="media-body ml-3">
                   <h6 class="heading text-primary mb-md-1">
@@ -170,7 +167,7 @@
                 <div
                   class="icon icon-shape bg-gradient-warning rounded-circle text-white"
                 >
-                  <i class="bi bi-clipboard2-data"></i>
+                  <i class="bi bi-clipboard-plus"></i>
                 </div>
                 <div class="media-body ml-3">
                   <h5 class="heading text-warning mb-md-1">

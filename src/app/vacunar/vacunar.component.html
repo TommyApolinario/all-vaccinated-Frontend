@@ -1,0 +1,152 @@
+<app-navbar></app-navbar>
+<section class="section section-lg section-hero section-shaped">
+  <div class="shape shape-style-1 shape-primary">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="separator separator-bottom separator-skew">
+    <svg
+      x="10"
+      y="10"
+      viewBox="0 0 2560 100"
+      preserveAspectRatio="none"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+  <div class="text-center text-muted mb-4"></div>
+  <div class="container">
+    <div class="card-header bg-white pb-3">
+      <h2 class="display-4 text-center">Ingresa los datos del paciente!</h2>
+      <h5 class="display-6 text-center">
+        Verifica si el paciente tiene una cita
+      </h5>
+      <div class="col">
+        <h6>Identifiacion del Paciente</h6>
+        <span>
+          <div class="form-group">
+            <input
+              type="text"
+              placeholder="ej:1207162700"
+              class="form-control form-control-alternative"
+            />
+          </div>
+        </span>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6>Nombres del paciente</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Alberto Jose Carpio Montes"
+                class="form-control form-control-alternative"
+                disabled=""
+              />
+            </div>
+          </span>
+        </div>
+        <div class="col">
+          <h6>Edad</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="number"
+                placeholder="Regular"
+                class="form-control form-control-alternative"
+                disabled=""
+              /></div
+          ></span>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+          <h6>Fecha de vacunación.</h6>
+          <div class="input-group input-group-alternative">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="ni ni-calendar-grid-58"></i
+              ></span>
+            </div>
+            <input
+              class="form-control datepicker"
+              placeholder="Seleciona una fecha"
+              name="dp"
+              [(ngModel)]="model"
+              ngbDatepicker
+              #d="ngbDatepicker"
+              (click)="d.toggle()"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="col">
+          <h6>Dosis</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="number"
+                placeholder="Regular"
+                class="form-control form-control-alternative"
+                disabled=""
+              /></div
+          ></span>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+          <h6>Tipo de Vacuna</h6>
+          <input
+            class="form-control"
+            list="DetallesVacuna"
+            id="exampleDataList"
+            placeholder="Selecciona una Vacuna"
+          />
+          <datalist id="DetallesVacuna">
+            <option value="San Francisco"></option>
+            <option value="New York"></option>
+            <option value="Seattle"></option>
+            <option value="Los Angeles"></option>
+            <option value="Chicago"></option>
+          </datalist>
+        </div>
+        <div class="col">
+          <h6>Lote</h6>
+          <span>
+            <div class="form-group">
+              <input
+                type="number"
+                placeholder="Regular"
+                class="form-control form-control-alternative"
+                disabled=""
+              /></div
+          ></span>
+        </div>
+      </div>
+      <div class="col">
+        <h6>Nombre del Vacunador</h6>
+        <input
+          class="form-control"
+          list="DetallesVacunador"
+          id="NombreEncargado"
+          placeholder="Seleccione la persona encargada"
+        />
+        <datalist id="DetallesVacunador">
+          <option value="Enf. Ariana Moreira"></option>
+          <option value="Enf. Sebastian Guzman"></option>
+          <option value="Lic. Alberto Santos"></option>
+          <option value="Aux. Jose Torres"></option>
+          <option value="Aux. Andy Nisasunta"></option>
+        </datalist>
+      </div>
+    </div>
+  </div>
+</section>

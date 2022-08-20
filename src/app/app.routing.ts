@@ -9,6 +9,7 @@ import { SignupComponent } from "./signup/signup.component";
 import { LandingComponent } from "./landing/landing.component";
 import { LoginComponent } from "./login/login.component";
 import { CitasComponent } from "./citas/citas.component";
+import { VacunarComponent } from "./vacunar/vacunar.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: "landing", component: LandingComponent },
   { path: "login", component: LoginComponent },
   { path: "citas", component: CitasComponent },
+  { path: "vacunar", component: VacunarComponent },
   { path: "", redirectTo: "login", pathMatch: "full" },
 ];
 
