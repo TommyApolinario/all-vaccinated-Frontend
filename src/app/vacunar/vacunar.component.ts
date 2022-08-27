@@ -16,7 +16,6 @@ export class VacunarComponent implements OnInit {
   focus;
   focus1;
   focus2;
-
   fromDate: NgbDate;
   toDate: NgbDate;
   hoveredDate: NgbDate;

@@ -15,6 +15,8 @@ import { HomeModule } from "./home/home.module";
 import { LoginComponent } from "./login/login.component";
 import { SharedModule } from "./shared/shared.module";
 import { VacunarComponent } from './vacunar/vacunar.component';
+import { HistoryComponent } from './history/history.component';
+import { ExistenciaComponent } from './existencia/existencia.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { VacunarComponent } from './vacunar/vacunar.component';
     ProfileComponent,
     LoginComponent,
     VacunarComponent,
+    HistoryComponent,
+    ExistenciaComponent,
   ],
   imports: [
     BrowserModule,

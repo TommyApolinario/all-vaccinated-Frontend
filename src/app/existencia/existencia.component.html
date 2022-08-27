@@ -1,0 +1,254 @@
+<app-navbar></app-navbar>
+<section class="section section-lg section-hero section-shaped">
+  <div class="shape shape-style-1 shape-primary">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="separator separator-bottom separator-skew">
+    <svg
+      x="10"
+      y="10"
+      viewBox="0 0 2560 100"
+      preserveAspectRatio="none"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+  <div class="text-center text-muted mb-4"></div>
+  <div class="container">
+    <div class="card-header bg-white pb-3">
+      <div class="row justify-content-center"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="text-center mb-4">Existencias de vacunas disponibles</h4>
+          <div class="table-wrap">
+            <table class="table">
+              <thead class="thead-primary">
+                <tr>
+                  <th>Id</th>
+                  <th>Vacuna</th>
+                  <th>Fecha de ingreso</th>
+                  <th>Fecha de caducidad</th>
+                  <th>Lote</th>
+                  <th>Accion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="scope">1</th>
+                  <td>Viruela</td>
+                  <td>15/08/2022</td>
+                  <td>01/08/2024</td>
+                  <td>N400</td>
+                  <td>
+                    <button
+                      href="#"
+                      class="btn btn-outline-info bi bi-pencil-square"
+                      (click)="open(classic1, 'modal_mini', 'sm')"
+                    ></button>
+                    <ng-template #classic1 let-c="close" let-d="dismiss">
+                      <div class="modal-content">
+                        <div class="modal-body p-0">
+                          <div class="card bg-secondary shadow border-0">
+                            <div class="text-muted text-center mb-3">
+                              <div
+                                class="card-header bg-white pb-2 d-flex justify-content-center align-items-center"
+                              >
+                                <img
+                                  src="./assets/img/brand/AllVaccinated.png"
+                                  style="width: 200px"
+                                  class="img-fluid"
+                                />
+                              </div>
+                            </div>
+                            <div class="card-body px-lg-5 py-lg-5">
+                              <div class="text-center text-muted mb-4">
+                                <small
+                                  >Rellena los datos que quieras editar</small
+                                >
+                              </div>
+                              <form role="form">
+                                <div class="form-group mb-3">
+                                  <div
+                                    class="input-group input-group-alternative"
+                                  >
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"
+                                        ><i class="ni ni-email-83"></i
+                                      ></span>
+                                    </div>
+                                    <input
+                                      class="form-control"
+                                      placeholder="Vacuna"
+                                      type="text"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div
+                                    class="input-group input-group-alternative"
+                                  >
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"
+                                        ><i class="bi bi-calendar-check"></i
+                                      ></span>
+                                    </div>
+                                    <input
+                                      class="form-control"
+                                      placeholder="Fecha de ingreso"
+                                      type="date"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div
+                                    class="input-group input-group-alternative"
+                                  >
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"
+                                        ><i class="bi bi-calendar-x"></i
+                                      ></span>
+                                    </div>
+                                    <input
+                                      class="form-control"
+                                      placeholder="Fecha de caducidad"
+                                      type="date"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div
+                                    class="input-group input-group-alternative"
+                                  >
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"
+                                        ><i class="bi bi-archive"></i
+                                      ></span>
+                                    </div>
+                                    <input
+                                      class="form-control"
+                                      placeholder="Lote"
+                                      type="text"
+                                    />
+                                  </div>
+                                </div>
+                                <div
+                                  class="custom-control custom-control-alternative custom-checkbox"
+                                >
+                                  <input
+                                    class="custom-control-input"
+                                    id=" customCheckLogin"
+                                    type="checkbox"
+                                  />
+                                  <label
+                                    class="custom-control-label"
+                                    for=" customCheckLogin"
+                                  >
+                                    <span>Confirma los datos correctos</span>
+                                  </label>
+                                </div>
+                                <div class="text-center">
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-success"
+                                  >
+                                    Editar
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                    <a
+                      href=""
+                      class="btn btn btn-outline-danger bi bi-trash3-fill"
+                    ></a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" class="scope">2</th>
+                  <td>Insulina</td>
+                  <td>12/08/2022</td>
+                  <td>12/08/2024</td>
+                  <td>N400</td>
+                  <td>
+                    <a
+                      href=""
+                      class="btn btn-outline-info bi bi-pencil-square"
+                    ></a>
+                    <a
+                      href=""
+                      class="btn btn btn-outline-danger bi bi-trash3-fill"
+                    ></a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" class="scope">3</th>
+                  <td>Fiebre Amarilla</td>
+                  <td>12/08/2022</td>
+                  <td>05/08/2024</td>
+                  <td>N400</td>
+                  <td>
+                    <a
+                      href=""
+                      class="btn btn-outline-info bi bi-pencil-square"
+                    ></a>
+                    <a
+                      href=""
+                      class="btn btn btn-outline-danger bi bi-trash3-fill"
+                    ></a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" class="scope">4</th>
+                  <td>Covid</td>
+                  <td>12/08/2022</td>
+                  <td>01/08/2022</td>
+                  <td>N400</td>
+                  <td>
+                    <a
+                      href=""
+                      class="btn btn-outline-info bi bi-pencil-square"
+                    ></a>
+                    <a
+                      href=""
+                      class="btn btn btn-outline-danger bi bi-trash3-fill"
+                    ></a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" class="scope">5</th>
+                  <td>Alercetd</td>
+                  <td>12/08/2022</td>
+                  <td>04/09/2022</td>
+                  <td>N400</td>
+                  <td>
+                    <a
+                      href=""
+                      class="btn btn-outline-info bi bi-pencil-square"
+                    ></a>
+                    <a
+                      href=""
+                      class="btn btn btn-outline-danger bi bi-trash3-fill"
+                    ></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -10,6 +10,8 @@ import { LandingComponent } from "./landing/landing.component";
 import { LoginComponent } from "./login/login.component";
 import { CitasComponent } from "./citas/citas.component";
 import { VacunarComponent } from "./vacunar/vacunar.component";
+import { HistoryComponent } from "./history/history.component";
+import { ExistenciaComponent } from "./existencia/existencia.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "citas", component: CitasComponent },
   { path: "vacunar", component: VacunarComponent },
+  { path: "history", component: HistoryComponent },
+  { path: "existencia", component: ExistenciaComponent },
   { path: "", redirectTo: "login", pathMatch: "full" },
 ];
 
