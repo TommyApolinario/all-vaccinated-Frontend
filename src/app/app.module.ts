@@ -17,6 +17,7 @@ import { SharedModule } from "./shared/shared.module";
 import { VacunarComponent } from './vacunar/vacunar.component';
 import { HistoryComponent } from './history/history.component';
 import { ExistenciaComponent } from './existencia/existencia.component';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ExistenciaComponent } from './existencia/existencia.component';
     VacunarComponent,
     HistoryComponent,
     ExistenciaComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,

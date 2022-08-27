@@ -12,6 +12,7 @@ import { CitasComponent } from "./citas/citas.component";
 import { VacunarComponent } from "./vacunar/vacunar.component";
 import { HistoryComponent } from "./history/history.component";
 import { ExistenciaComponent } from "./existencia/existencia.component";
+import { RegistroComponent } from "./registro/registro.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "vacunar", component: VacunarComponent },
   { path: "history", component: HistoryComponent },
   { path: "existencia", component: ExistenciaComponent },
+  { path: "registro", component: RegistroComponent },
   { path: "", redirectTo: "login", pathMatch: "full" },
 ];
 
