@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { RegistrarService } from "../signup/registrar.service";
 import {
   NgbDate,
   NgbCalendar,
@@ -13,9 +14,6 @@ import {
 })
 export class RegistroComponent implements OnInit {
   test: Date = new Date();
-  focus;
-  focus1;
-  focus2;
   fromDate: NgbDate;
   toDate: NgbDate;
   hoveredDate: NgbDate;

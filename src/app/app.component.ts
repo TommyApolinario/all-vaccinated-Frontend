@@ -45,9 +45,9 @@ export class AppComponent implements OnInit {
     // This is necessary so you never see what is "behind" the navbar.
     if (st > lastScrollTop && st > navbarHeight) {
       // Scroll Down
-      if (navbar.classList.contains("headroom--pinned")) {
-        navbar.classList.remove("headroom--pinned");
-        navbar.classList.add("headroom--unpinned");
+      if (navbar?.classList?.contains("headroom--pinned")) {
+        navbar?.classList?.remove("headroom--pinned");
+        navbar?.classList?.add("headroom--unpinned");
       }
       // $('.navbar.headroom--pinned').removeClass('headroom--pinned').addClass('headroom--unpinned');
     } else {
@@ -55,9 +55,9 @@ export class AppComponent implements OnInit {
       //  $(window).height()
       if (st + window.innerHeight < document.body.scrollHeight) {
         // $('.navbar.headroom--unpinned').removeClass('headroom--unpinned').addClass('headroom--pinned');
-        if (navbar.classList.contains("headroom--unpinned")) {
-          navbar.classList.remove("headroom--unpinned");
-          navbar.classList.add("headroom--pinned");
+        if (navbar?.classList?.contains("headroom--unpinned")) {
+          navbar?.classList?.remove("headroom--unpinned");
+          navbar?.classList?.add("headroom--pinned");
         }
       }
     }
@@ -79,10 +79,10 @@ export class AppComponent implements OnInit {
           const number = window.scrollY;
           if (number > 150 || window.pageYOffset > 150) {
             // add logic
-            navbar.classList.add("headroom--not-top");
+            navbar?.classList?.add("headroom--not-top");
           } else {
             // remove logic
-            navbar.classList.remove("headroom--not-top");
+            navbar?.classList?.remove("headroom--not-top");
           }
         });
       });

@@ -14,14 +14,16 @@ import { HomeComponent } from "./home/home.component";
 import { HomeModule } from "./home/home.module";
 import { LoginComponent } from "./login/login.component";
 import { SharedModule } from "./shared/shared.module";
-import { VacunarComponent } from './vacunar/vacunar.component';
-import { HistoryComponent } from './history/history.component';
-import { ExistenciaComponent } from './existencia/existencia.component';
-import { RegistroComponent } from './registro/registro.component';
+import { VacunarComponent } from "./vacunar/vacunar.component";
+import { HistoryComponent } from "./history/history.component";
+import { ExistenciaComponent } from "./existencia/existencia.component";
+import { RegistroComponent } from "./registro/registro.component";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
+
     SignupComponent,
     LandingComponent,
     ProfileComponent,
@@ -33,6 +35,7 @@ import { RegistroComponent } from './registro/registro.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     NgbModule,
     FormsModule,
     RouterModule,

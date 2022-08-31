@@ -61,6 +61,7 @@
         <div class="col">
           <h6>Seleccione el tipo de vacuna.</h6>
           <input
+            [autocomplete]="'off'"
             class="form-control"
             list="datalistOptions"
             id="exampleDataList"
@@ -68,10 +69,11 @@
           />
           <datalist id="datalistOptions">
             <option value="San Francisco"></option>
-            <option value="New York"></option>
-            <option value="Seattle"></option>
-            <option value="Los Angeles"></option>
-            <option value="Chicago"></option>
+
+            <option
+              *ngFor="let item of lista"
+              [value]="item.descripcion"
+            ></option>
           </datalist>
         </div>
         <div class="col">

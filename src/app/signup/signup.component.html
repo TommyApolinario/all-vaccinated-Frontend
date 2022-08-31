@@ -48,6 +48,7 @@
                             type="text"
                             (focus)="focus = true"
                             (blur)="focus = false"
+                            [(ngModel)]="name"
                           />
                         </div>
                       </div>
@@ -67,6 +68,7 @@
                             type="email"
                             (focus)="focus1 = true"
                             (blur)="focus1 = false"
+                            [(ngModel)]="email"
                           />
                         </div>
                       </div>
@@ -86,6 +88,7 @@
                             type="date"
                             (focus)="focus = true"
                             (blur)="focus = false"
+                            [(ngModel)]="birthday"
                           />
                         </div>
                         <div class="input-group input-group-alternative mb-3">
@@ -100,6 +103,7 @@
                             type="password"
                             (focus)="focus2 = true"
                             (blur)="focus2 = false"
+                            [(ngModel)]="password"
                           />
                         </div>
                       </div>
@@ -121,6 +125,7 @@
                             type="text"
                             (focus)="focus = true"
                             (blur)="focus = false"
+                            [(ngModel)]="surname"
                           />
                         </div>
                       </div>
@@ -140,6 +145,7 @@
                             type="text"
                             (focus)="focus1 = true"
                             (blur)="focus1 = false"
+                            [(ngModel)]="identificacion"
                           />
                         </div>
                       </div>
@@ -159,6 +165,7 @@
                             type="text"
                             (focus)="focus1 = true"
                             (blur)="focus1 = false"
+                            [(ngModel)]="phone_number"
                           />
                         </div>
                       </div>
@@ -174,6 +181,7 @@
                           type="password"
                           (focus)="focus2 = true"
                           (blur)="focus2 = false"
+                          [(ngModel)]="repeat_password"
                         />
                       </div>
 
@@ -214,7 +222,11 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-2">
+                  <button
+                    (click)="ResgistrarU()"
+                    type="button"
+                    class="btn btn-primary mt-2"
+                  >
                     Crear Cuenta
                   </button>
                 </div>

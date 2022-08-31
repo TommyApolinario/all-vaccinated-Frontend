@@ -44,6 +44,7 @@
                       type="text"
                       (focus)="focus = true"
                       (blur)="focus = false"
+                      [(ngModel)]="identificacion"
                     />
                   </div>
                 </div>
@@ -63,6 +64,7 @@
                       type="password"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
+                      [(ngModel)]="password"
                     />
                   </div>
                 </div>
@@ -79,9 +81,12 @@
                   </label>
                 </div>
                 <div class="text-center">
-                  <a routerLink="/home" class="btn btn-primary my-4">
+                  <button
+                    (click)="IniciarSesion()"
+                    class="btn btn-primary my-4"
+                  >
                     Iniciar Sesion
-                  </a>
+                  </button>
                 </div>
               </form>
             </div>

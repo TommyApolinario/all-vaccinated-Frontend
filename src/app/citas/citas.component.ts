@@ -24,6 +24,22 @@ export class CitasComponent implements OnInit {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), "d", 10);
   }
+
+  public lista = [
+    {
+      id: 1,
+      descripcion: "ecu",
+    },
+    {
+      id: 2,
+      descripcion: "USA",
+    },
+    {
+      id: 3,
+      descripcion: "titi",
+    },
+  ];
+
   open(content, type, modalDimension) {
     if (modalDimension === "sm" && type === "modal_mini") {
       this.modalService
