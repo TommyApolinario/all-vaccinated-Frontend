@@ -25,7 +25,7 @@ export class CitasComponent implements OnInit {
     this.toDate = calendar.getNext(calendar.getToday(), "d", 10);
   }
 
-  public lista = [
+  public listaVacuna = [
     {
       id: 1,
       descripcion: "ecu",

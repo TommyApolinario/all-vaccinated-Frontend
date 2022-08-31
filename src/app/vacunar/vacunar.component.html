@@ -105,17 +105,19 @@
         <div class="col">
           <h6>Tipo de Vacuna</h6>
           <input
+            [autocomplete]="'off'"
             class="form-control"
-            list="DetallesVacuna"
+            list="datalistOptions"
             id="exampleDataList"
             placeholder="Selecciona una Vacuna"
           />
-          <datalist id="DetallesVacuna">
+          <datalist id="ListaVacunas">
             <option value="San Francisco"></option>
-            <option value="New York"></option>
-            <option value="Seattle"></option>
-            <option value="Los Angeles"></option>
-            <option value="Chicago"></option>
+
+            <option
+              *ngFor="let item of listaVacunar"
+              [value]="item.descripcion"
+            ></option>
           </datalist>
         </div>
         <div class="col">
@@ -134,17 +136,19 @@
       <div class="col">
         <h6>Nombre del Vacunador</h6>
         <input
+          [autocomplete]="'off'"
           class="form-control"
-          list="DetallesVacunador"
-          id="NombreEncargado"
-          placeholder="Seleccione la persona encargada"
+          list="datalistOptions"
+          id="exampleDataList"
+          placeholder="Selecciona una Vacuna"
         />
-        <datalist id="DetallesVacunador">
-          <option value="Enf. Ariana Moreira"></option>
-          <option value="Enf. Sebastian Guzman"></option>
-          <option value="Lic. Alberto Santos"></option>
-          <option value="Aux. Jose Torres"></option>
-          <option value="Aux. Andy Nisasunta"></option>
+        <datalist id="ListaVacunas">
+          <option value="San Francisco"></option>
+
+          <option
+            *ngFor="let item of Vacunador"
+            [value]="item.descripcion"
+          ></option>
         </datalist>
       </div>
       <div class="text-center">

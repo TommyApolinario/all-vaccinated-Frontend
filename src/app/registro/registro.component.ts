@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { RegistrarService } from "../signup/registrar.service";
+import { ILaboratorio } from "./interfaces/laboratorioresponse.interface";
+import { RegistrarvService } from "./registrarv.service";
 import {
   NgbDate,
   NgbCalendar,
@@ -22,10 +24,39 @@ export class RegistroComponent implements OnInit {
   model2: NgbDate;
   model: NgbDate;
   modelb: NgbDate;
-  constructor(private modalService: NgbModal, calendar: NgbCalendar) {
+
+  //variables para enviar datos al servicio
+
+  Nombre: string;
+  Descripcion: string;
+  lote: string;
+  fecha_adminision: Date;
+  fecha_caducidad: Date;
+  id_laboratorio: number;
+  cantidad: number;
+
+  constructor(
+    private modalService: NgbModal,
+    calendar: NgbCalendar,
+    private registrarv: RegistrarvService
+  ) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), "d", 10);
   }
+
+  RegistrarVacuna() {
+    this.registrarv.Registrardatos({
+      name: this.Nombre,
+      description: this.Descripcion,
+      lote: this.lote,
+      admission_date: this.fecha_adminision,
+      expiration_date: this.fecha_caducidad,
+      id_laboratory: this.id_laboratorio,
+      quantity: this.cantidad,
+    });
+  }
+
+  public listaLaboratorio = [];
   open(content, type, modalDimension) {
     if (modalDimension === "sm" && type === "modal_mini") {
       this.modalService
@@ -115,5 +146,9 @@ export class RegistroComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.registrarv.RecibirLaborario().subscribe((Laboratorios) => {
+      console.log(Laboratorios);
+    });
+  }
 }

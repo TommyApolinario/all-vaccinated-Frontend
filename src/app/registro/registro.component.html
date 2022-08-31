@@ -36,6 +36,7 @@
                 type="text"
                 placeholder="HEPATITIS B"
                 class="form-control form-control-alternative"
+                [(ngModel)]="Nombre"
               />
             </div>
           </span>
@@ -48,6 +49,7 @@
                 type="text"
                 placeholder="N400"
                 class="form-control form-control-alternative"
+                [(ngModel)]="lote"
               /></div
           ></span>
         </div>
@@ -64,6 +66,7 @@
               class="form-control"
               placeholder="Fecha de Caducidad"
               type="date"
+              [(ngModel)]="fecha_adminision"
             />
           </div>
         </div>
@@ -79,6 +82,7 @@
               class="form-control"
               placeholder="Fecha de Caducidad"
               type="date"
+              [(ngModel)]="fecha_caducidad"
             />
           </div>
         </div>
@@ -86,13 +90,22 @@
         <div class="col">
           <h6>Laboratorio</h6>
           <span>
-            <div class="form-group">
-              <input
-                type="text"
-                placeholder="N400"
-                class="form-control form-control-alternative"
-              /></div
-          ></span>
+            <input
+              [autocomplete]="'off'"
+              class="form-control"
+              list="datalistOptions"
+              id="exampleDataList"
+              placeholder="Selecciona una Vacuna"
+            />
+            <datalist id="datalistOptions">
+              <option value="San Francisco"></option>
+
+              <option
+                *ngFor="let item of listaLaboratorio"
+                [value]="item.descripcion"
+              ></option>
+            </datalist>
+          </span>
         </div>
         <div class="col">
           <h6>Cantidad</h6>
@@ -102,6 +115,7 @@
                 type="text"
                 placeholder="100"
                 class="form-control form-control-alternative"
+                [(ngModel)]="cantidad"
               /></div
           ></span>
         </div>

@@ -16,7 +16,6 @@ export class SignupComponent implements OnInit {
   email: string;
   birthday: Date;
   phone_number: string;
-  heroeborrado: string = "a";
 
   test: Date = new Date();
   focus;
