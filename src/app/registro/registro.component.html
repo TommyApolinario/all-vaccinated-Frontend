@@ -26,115 +26,123 @@
   <div class="text-center text-muted mb-4"></div>
   <div class="container">
     <div class="card-header bg-white pb-3">
-      <h2 class="display-4 text-center">Ingresa los datos de la vacuna</h2>
-      <div class="row">
-        <div class="col">
-          <h6>Nombres de la vacuna</h6>
-          <span>
-            <div class="form-group">
+      <form [formGroup]="registerVaccineForm">
+        <h2 class="display-4 text-center">Ingresa los datos de la vacuna</h2>
+        <div class="row">
+          <div class="col">
+            <h6>Nombres de la vacuna</h6>
+            <span>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="HEPATITIS B"
+                  class="form-control form-control-alternative"
+                  formControlName="nombre"
+                />
+              </div>
+            </span>
+          </div>
+          <div class="col">
+            <h6>Lote</h6>
+            <span>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="2000-ABCDE-1023"
+                  class="form-control form-control-alternative"
+                  formControlName="lote"
+                /></div
+            ></span>
+          </div>
+          <div class="w-100"></div>
+          <div class="col">
+            <h6>Fecha de Ingreso.</h6>
+            <div class="input-group input-group-alternative">
+              <div class="input-group-prepend">
+                <span class="input-group-text"
+                  ><i class="ni ni-calendar-grid-58"></i
+                ></span>
+              </div>
               <input
-                type="text"
-                placeholder="HEPATITIS B"
-                class="form-control form-control-alternative"
-                [(ngModel)]="Nombre"
+                class="form-control"
+                placeholder="Fecha de Caducidad"
+                type="date"
+                formControlName="fecha_admision"
               />
             </div>
-          </span>
-        </div>
-        <div class="col">
-          <h6>Lote</h6>
-          <span>
-            <div class="form-group">
+          </div>
+          <div class="col">
+            <h6>Fecha de Caducidad.</h6>
+            <div class="input-group input-group-alternative">
+              <div class="input-group-prepend">
+                <span class="input-group-text"
+                  ><i class="ni ni-calendar-grid-58"></i
+                ></span>
+              </div>
               <input
-                type="text"
-                placeholder="N400"
-                class="form-control form-control-alternative"
-                [(ngModel)]="lote"
-              /></div
-          ></span>
-        </div>
-        <div class="w-100"></div>
-        <div class="col">
-          <h6>Fecha de Ingreso.</h6>
-          <div class="input-group input-group-alternative">
-            <div class="input-group-prepend">
-              <span class="input-group-text"
-                ><i class="ni ni-calendar-grid-58"></i
-              ></span>
+                class="form-control"
+                placeholder="Fecha de Caducidad"
+                type="date"
+                formControlName="fecha_expiracion"
+              />
             </div>
-            <input
-              class="form-control"
-              placeholder="Fecha de Caducidad"
-              type="date"
-              [(ngModel)]="fecha_adminision"
-            />
+          </div>
+          <div class="w-100"></div>
+          <div class="col">
+            <h6>Laboratorio</h6>
+            <span>
+              <input
+                [autocomplete]="'off'"
+                class="form-control"
+                list="datalistOptions"
+                formControlName="id_laboratorio"
+                id="exampleDataList"
+                placeholder="Selecciona una Vacuna"
+              />
+              <datalist id="datalistOptions">
+                <option
+                  *ngFor="let item of laboratorylist"
+                  [value]="item.name"
+                ></option>
+              </datalist>
+            </span>
+          </div>
+          <div class="col">
+            <h6>Cantidad</h6>
+            <span>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="100"
+                  class="form-control form-control-alternative"
+                  formControlName="cantidad"
+                /></div
+            ></span>
           </div>
         </div>
         <div class="col">
-          <h6>Fecha de Caducidad.</h6>
-          <div class="input-group input-group-alternative">
-            <div class="input-group-prepend">
-              <span class="input-group-text"
-                ><i class="ni ni-calendar-grid-58"></i
-              ></span>
-            </div>
-            <input
-              class="form-control"
-              placeholder="Fecha de Caducidad"
-              type="date"
-              [(ngModel)]="fecha_caducidad"
-            />
+          <h6>Descripcion de la Vacuna</h6>
+          <textarea
+            class="form-control"
+            id="Descripcion"
+            rows="3"
+            placeholder="Esta dosis de vacuna ayuda contra....."
+            formControlName="descripcion"
+          ></textarea>
+        </div>
+        <div class="col">
+          <h6></h6>
+          <div class="text-center">
+            <button
+              (click)="RegistrarVacuna()"
+              type="button"
+              class="btn btn-success"
+            >
+              Registrar
+            </button>
           </div>
         </div>
-        <div class="w-100"></div>
-        <div class="col">
-          <h6>Laboratorio</h6>
-          <span>
-            <input
-              [autocomplete]="'off'"
-              class="form-control"
-              list="datalistOptions"
-              id="exampleDataList"
-              placeholder="Selecciona una Vacuna"
-            />
-            <datalist id="datalistOptions">
-              <option value="San Francisco"></option>
-
-              <option
-                *ngFor="let item of listaLaboratorio"
-                [value]="item.descripcion"
-              ></option>
-            </datalist>
-          </span>
-        </div>
-        <div class="col">
-          <h6>Cantidad</h6>
-          <span>
-            <div class="form-group">
-              <input
-                type="text"
-                placeholder="100"
-                class="form-control form-control-alternative"
-                [(ngModel)]="cantidad"
-              /></div
-          ></span>
-        </div>
-      </div>
-      <div class="col">
-        <h6>Descripcion de la Vacuna</h6>
-        <textarea
-          class="form-control"
-          id="Descripcion"
-          rows="3"
-          placeholder="Esta dosis de vacuna ayuda contra....."
-        ></textarea>
-      </div>
-      <div class="col">
-        <h6></h6>
-        <div class="text-center">
-          <button type="button" class="btn btn-success">Registrar</button>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </section>

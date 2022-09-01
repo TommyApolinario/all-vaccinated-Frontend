@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, Query } from "@angular/core";
 import { Router } from "@angular/router";
 import { map, of, switchMap } from "rxjs";
+import { environment } from "src/environments/environment";
 import Swal from "sweetalert2";
 import { ILogin } from "./interfaces/login.interface";
 
@@ -22,11 +23,9 @@ export class ServiciolService {
 
   IniciarSesion(Credenciales: ILogin) {
     this.http
-      .post<any>(
-        "https://a535-186-70-98-171.sa.ngrok.io/api/auth/login",
-        Credenciales,
-        { observe: "response" }
-      )
+      .post<any>(`${environment.urlAdress}/api/auth/login`, Credenciales, {
+        observe: "response",
+      })
       .pipe(
         map((data) => {
           console.log("Here will be return response code Ex :200", data.status);

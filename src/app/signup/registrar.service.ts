@@ -5,6 +5,7 @@ import { map } from "rxjs";
 import { ISignup } from "./interfaces/registrar.interface";
 import Swal from "sweetalert2";
 import { Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -15,11 +16,9 @@ export class RegistrarService {
   RegistrarUsuario(Credenciales: ISignup) {
     console.log(Credenciales);
     this.http
-      .post<any>(
-        "https://a535-186-70-98-171.sa.ngrok.io/api/auth/register",
-        Credenciales,
-        { observe: "response" }
-      )
+      .post<any>(`${environment.urlAdress} /api/auth/register`, Credenciales, {
+        observe: "response",
+      })
       .pipe(
         map((data) => {
           console.log("Here will be return response code Ex :200", data.status);
@@ -35,7 +34,6 @@ export class RegistrarService {
             });
             this._router.navigate(["login"]);
           }
-
           return data.status;
         })
       )
@@ -51,7 +49,8 @@ export class RegistrarService {
               icon: "error",
               title: "Oops...",
               text: "Algo Salio mal!",
-              footer: '<a href="">Why do I have this issue?</a>',
+              footer:
+                '<a href="">Revisa los campos si estan ingresados correctamente</a>',
             });
           }
         }

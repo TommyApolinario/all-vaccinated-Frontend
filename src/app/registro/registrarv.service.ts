@@ -5,6 +5,7 @@ import { map } from "rxjs";
 import Swal from "sweetalert2";
 import { IRegistrov } from "./interfaces/registro.interface";
 import { ILaboratorio } from "./interfaces/laboratorioresponse.interface";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -13,13 +14,10 @@ export class RegistrarvService {
   constructor(private http: HttpClient, private _router: Router) {}
 
   Registrardatos(Datos: IRegistrov) {
-    console.log(Datos);
     this.http
-      .post<any>(
-        "https://a535-186-70-98-171.sa.ngrok.io/api/auth/register",
-        Datos,
-        { observe: "response" }
-      )
+      .post<any>(`${environment.urlAdress}/api/vaccines`, Datos, {
+        observe: "response",
+      })
       .pipe(
         map((data) => {
           console.log("Here will be return response code Ex :200", data.status);
@@ -33,6 +31,7 @@ export class RegistrarvService {
               showConfirmButton: false,
               timer: 1500,
             });
+            this._router.navigate(["existencia"]);
           }
 
           return data.status;
@@ -50,7 +49,7 @@ export class RegistrarvService {
               icon: "error",
               title: "Oops...",
               text: "No se registraron los datos!",
-              footer: '<a href="">Why do I have this issue?</a>',
+              footer: '<a href="">Algo ocurrio, intentalo mas tarde</a>',
             });
           }
         }
@@ -58,8 +57,8 @@ export class RegistrarvService {
   }
 
   RecibirLaborario() {
-    return this.http.get<ILaboratorio>(
-      "https://a535-186-70-98-171.sa.ngrok.io/api/laboratory"
+    return this.http.get<ILaboratorio[]>(
+      `${environment.urlAdress}/api/laboratory`
     );
   }
 }

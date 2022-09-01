@@ -8,6 +8,7 @@ import {
   ModalDismissReasons,
   NgbModal,
 } from "@ng-bootstrap/ng-bootstrap";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-registro",
@@ -25,6 +26,8 @@ export class RegistroComponent implements OnInit {
   model: NgbDate;
   modelb: NgbDate;
 
+  laboratorylist: ILaboratorio[] = [];
+
   //variables para enviar datos al servicio
 
   Nombre: string;
@@ -35,8 +38,19 @@ export class RegistroComponent implements OnInit {
   id_laboratorio: number;
   cantidad: number;
 
+  registerVaccineForm: FormGroup = this.fbuil.group({
+    nombre: ["", Validators.required],
+    descripcion: ["", Validators.required],
+    lote: ["", Validators.required],
+    fecha_admision: ["", Validators.required],
+    fecha_expiracion: ["", Validators.required],
+    cantidad: ["", Validators.required],
+    id_laboratorio: ["", Validators.required],
+  });
+
   constructor(
     private modalService: NgbModal,
+    private fbuil: FormBuilder,
     calendar: NgbCalendar,
     private registrarv: RegistrarvService
   ) {
@@ -45,15 +59,22 @@ export class RegistroComponent implements OnInit {
   }
 
   RegistrarVacuna() {
-    this.registrarv.Registrardatos({
-      name: this.Nombre,
-      description: this.Descripcion,
-      lote: this.lote,
-      admission_date: this.fecha_adminision,
-      expiration_date: this.fecha_caducidad,
-      id_laboratory: this.id_laboratorio,
-      quantity: this.cantidad,
-    });
+    let nameAux = this.registerVaccineForm.get("id_laboratorio").value;
+    let laboratoryObject = this.laboratorylist.find(
+      (res) => res.name === nameAux
+    );
+
+    if (laboratoryObject) {
+      this.registrarv.Registrardatos({
+        name: this.registerVaccineForm.get("nombre").value,
+        description: this.registerVaccineForm.get("descripcion").value,
+        lote: this.registerVaccineForm.get("lote").value,
+        admission_date: this.registerVaccineForm.get("fecha_admision").value,
+        expiration_date: this.registerVaccineForm.get("fecha_expiracion").value,
+        id_laboratory: laboratoryObject.id,
+        quantity: Number(this.registerVaccineForm.get("cantidad").value),
+      });
+    }
   }
 
   public listaLaboratorio = [];
@@ -148,7 +169,9 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrarv.RecibirLaborario().subscribe((Laboratorios) => {
-      console.log(Laboratorios);
+      if (Laboratorios) {
+        this.laboratorylist = Laboratorios;
+      }
     });
   }
 }
