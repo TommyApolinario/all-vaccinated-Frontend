@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import {
   NgbDate,
   NgbCalendar,
@@ -23,11 +24,15 @@ export class VacunarComponent implements OnInit {
   model1: NgbDate;
   model2: NgbDate;
   model: NgbDate;
-  constructor(private modalService: NgbModal, calendar: NgbCalendar) {
+  constructor(
+    private modalService: NgbModal,
+    calendar: NgbCalendar,
+    private fbuil: FormBuilder
+  ) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), "d", 10);
   }
-
+  vacunarUsuarioFrom: FormGroup = this.fbuil.group({});
   public listaVacunar = [
     {
       id: 1,

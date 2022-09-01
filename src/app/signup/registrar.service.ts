@@ -16,7 +16,7 @@ export class RegistrarService {
   RegistrarUsuario(Credenciales: ISignup) {
     console.log(Credenciales);
     this.http
-      .post<any>(`${environment.urlAdress} /api/auth/register`, Credenciales, {
+      .post<any>(`${environment.urlAdress}/api/auth/register`, Credenciales, {
         observe: "response",
       })
       .pipe(
