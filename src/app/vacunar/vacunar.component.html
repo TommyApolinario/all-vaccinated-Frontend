@@ -40,6 +40,11 @@
                 placeholder="ej:1207162700"
                 class="form-control form-control-alternative"
               />
+              <button class="btn btn-icon btn-2 btn-primary" type="button">
+                <span class="btn-inner--icon"
+                  ><i class="bi bi-search"></i
+                ></span>
+              </button>
             </div>
           </span>
         </div>
@@ -91,7 +96,7 @@
             </div>
           </div>
           <div class="col">
-            <h6>Dosis</h6>
+            <h6>Laboratorio</h6>
             <span>
               <div class="form-group">
                 <input
@@ -108,13 +113,11 @@
             <input
               [autocomplete]="'off'"
               class="form-control"
-              list="datalistOptions"
-              id="exampleDataList"
+              list="datalistOptions1"
+              id="ListaVacuna"
               placeholder="Selecciona una Vacuna"
             />
-            <datalist id="ListaVacunas">
-              <option value="San Francisco"></option>
-
+            <datalist id="datalistOptions1">
               <option
                 *ngFor="let item of listaVacunar"
                 [value]="item.descripcion"
@@ -140,12 +143,10 @@
             [autocomplete]="'off'"
             class="form-control"
             list="datalistOptions"
-            id="exampleDataList"
-            placeholder="Selecciona una Vacuna"
+            id="ListaVacunador"
+            placeholder="Selecciona un encargado"
           />
-          <datalist id="ListaVacunas">
-            <option value="San Francisco"></option>
-
+          <datalist id="datalistOptions">
             <option
               *ngFor="let item of Vacunador"
               [value]="item.descripcion"
