@@ -13,3 +13,11 @@ export interface IExistencia {
     email: string;
   };
 }
+
+export interface editExistenceI {
+  id: string;
+  name: string;
+  lote: string;
+  admission_date: string;
+  expiration_date: string;
+}

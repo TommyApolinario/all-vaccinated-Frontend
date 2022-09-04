@@ -43,8 +43,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of existenciaList">
-                  <th scope="row" class="scope">1</th>
+                <tr *ngFor="let item of existenciaList; let i = index">
+                  <th scope="row" class="scope">{{ item.id }}</th>
                   <td>{{ item.name }}</td>
                   <td>{{ item.admissionDate }}</td>
                   <td>{{ item.expirationDate }}</td>
@@ -52,7 +52,7 @@
                   <td>
                     <button
                       class="btn btn-outline-info bi bi-pencil-square"
-                      (click)="open(classic1, 'modal_mini', 'sm')"
+                      (click)="open(classic1, 'modal_mini', 'sm', item)"
                     ></button>
                     <ng-template #classic1 let-c="close" let-d="dismiss">
                       <div class="modal-content">
@@ -75,7 +75,7 @@
                                   >Rellena los datos que quieras editar</small
                                 >
                               </div>
-                              <form role="form">
+                              <form [formGroup]="editExistenciaForm">
                                 <div class="form-group mb-3">
                                   <div
                                     class="input-group input-group-alternative"
@@ -86,6 +86,7 @@
                                       ></span>
                                     </div>
                                     <input
+                                      [formControlName]="'name'"
                                       class="form-control"
                                       placeholder="Vacuna"
                                       type="text"
@@ -104,6 +105,7 @@
                                     </div>
                                     <input
                                       class="form-control"
+                                      [formControlName]="'admission_date'"
                                       placeholder="Fecha de ingreso"
                                       type="date"
                                       value="{{ item.admissionDate }}"
@@ -123,6 +125,7 @@
                                       class="form-control"
                                       placeholder="Fecha de caducidad"
                                       type="date"
+                                      [formControlName]="'expiration_date'"
                                       value="{{ item.expirationDate }}"
                                     />
                                   </div>
@@ -141,16 +144,17 @@
                                       placeholder="Lote"
                                       type="text"
                                       value="{{ item.lote }}"
+                                      [formControlName]="'lote'"
                                     />
                                   </div>
                                 </div>
-                                <div
+                                <!-- <div
                                   class="custom-control custom-control-alternative custom-checkbox"
                                 >
                                   <input
                                     class="custom-control-input"
-                                    id=" customCheckLogin"
                                     type="checkbox"
+                                    [formControl]="checkConfirmedData"
                                   />
                                   <label
                                     class="custom-control-label"
@@ -158,9 +162,11 @@
                                   >
                                     <span>Confirma los datos correctos</span>
                                   </label>
-                                </div>
+                                </div> -->
                                 <div class="text-center">
                                   <button
+                                    [disabled]="checkConfirmedData.invalid"
+                                    (click)="editRow(item.id)"
                                     type="button"
                                     class="btn btn-outline-success"
                                   >
@@ -173,7 +179,10 @@
                         </div>
                       </div>
                     </ng-template>
-                    <a class="btn btn btn-outline-danger bi bi-trash3-fill"></a>
+                    <button
+                      (click)="deleteElement(item.id)"
+                      class="btn btn btn-outline-danger bi bi-trash3-fill"
+                    ></button>
                   </td>
                 </tr>
               </tbody>
