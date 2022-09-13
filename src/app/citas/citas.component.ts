@@ -1,6 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { NgbDate, NgbCalendar } from "@ng-bootstrap/ng-bootstrap";
+import { IVacunas } from "./interfaces/vacunas.interface";
+import { VacunasService } from "./vacunas.service";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { LocalServiceService } from "../shared/services/local-service/local-service.service";
+import jwt_decode from "jwt-decode";
+import { ISignup } from "../signup/interfaces/registrar.interface";
 
 @Component({
   selector: "app-citas",
@@ -20,25 +26,29 @@ export class CitasComponent implements OnInit {
   model1: NgbDate;
   model2: NgbDate;
   model: NgbDate;
-  constructor(private modalService: NgbModal, calendar: NgbCalendar) {
+  constructor(
+    private modalService: NgbModal,
+    calendar: NgbCalendar,
+    private listvacunas: VacunasService,
+    private fbuild: FormBuilder,
+    private localService: LocalServiceService
+  ) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), "d", 10);
   }
 
-  public listaVacuna = [
-    {
-      id: 1,
-      descripcion: "ecu",
-    },
-    {
-      id: 2,
-      descripcion: "USA",
-    },
-    {
-      id: 3,
-      descripcion: "titi",
-    },
-  ];
+  listaVacuna: IVacunas[] = [];
+
+  registerDateForm: FormGroup = this.fbuild.group({
+    fecha: ["", Validators.required],
+    hora: ["", Validators.required],
+    vacuna: ["", Validators.required],
+    descripcion: ["", Validators.required],
+    nombre_paciente: ["", Validators.required],
+    identificacion: ["", Validators.required],
+    correo: ["", Validators.required],
+    telefono: ["", Validators.required],
+  });
 
   open(content, type, modalDimension) {
     if (modalDimension === "sm" && type === "modal_mini") {
@@ -128,5 +138,55 @@ export class CitasComponent implements OnInit {
       this.model2 = this.model1;
     }
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getUserLogin();
+    this.listvacunas.RecibirVacuna().subscribe((Vacunas) => {
+      if (Vacunas) {
+        this.listaVacuna = Vacunas;
+      }
+    });
+    this.constrolsListener();
+  }
+
+  constrolsListener(): void {
+    this.registerDateForm.get("vacuna").valueChanges.subscribe((res) => {
+      let objectVaccine: IVacunas = this.listaVacuna.find(
+        (data) => data.name === res
+      );
+
+      if (objectVaccine) {
+        this.registerDateForm
+          .get("descripcion")
+          .setValue(objectVaccine.description);
+      } else {
+        this.registerDateForm.get("descripcion").setValue("");
+      }
+    });
+  }
+
+  getUserLogin(): void {
+    let token = this.localService.getJsonLS("token");
+
+    let user: ISignup = this.getDecodedToken(token);
+
+    if (user) {
+      console.log(user);
+      this.registerDateForm
+        .get("nombre_paciente")
+        .setValue(user?.name + " " + user?.surname);
+      this.registerDateForm
+        .get("identificacion")
+        .setValue(user?.identification);
+      this.registerDateForm.get("telefono").setValue(user?.phone_number);
+      this.registerDateForm.get("correo").setValue(user?.email);
+    }
+  }
+
+  getDecodedToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
+    }
+  }
 }

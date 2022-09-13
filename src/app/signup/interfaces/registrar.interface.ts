@@ -5,6 +5,6 @@ export interface ISignup {
   name: string;
   surname: string;
   email: string;
-  birthday: Date;
+  birthday: Date | string;
   phone_number: string;
 }

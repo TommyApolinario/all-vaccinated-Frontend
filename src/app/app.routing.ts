@@ -13,18 +13,28 @@ import { VacunarComponent } from "./vacunar/vacunar.component";
 import { HistoryComponent } from "./history/history.component";
 import { ExistenciaComponent } from "./existencia/existencia.component";
 import { RegistroComponent } from "./registro/registro.component";
+import { AuthGuard } from "./core/auth/guards/auth.guard";
+import { NoAuthGuard } from "./core/auth/guards/no-auth.guard";
 
 const routes: Routes = [
-  { path: "home", component: HomeComponent },
-  { path: "user-profile", component: ProfileComponent },
-  { path: "register", component: SignupComponent },
-  { path: "landing", component: LandingComponent },
-  { path: "login", component: LoginComponent },
-  { path: "citas", component: CitasComponent },
-  { path: "vacunar", component: VacunarComponent },
-  { path: "history", component: HistoryComponent },
-  { path: "existencia", component: ExistenciaComponent },
-  { path: "registro", component: RegistroComponent },
+  { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: "user-profile",
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: "register", component: SignupComponent, canActivate: [NoAuthGuard] },
+  { path: "landing", component: LandingComponent, canActivate: [AuthGuard] },
+  { path: "login", component: LoginComponent, canActivate: [NoAuthGuard] },
+  { path: "citas", component: CitasComponent, canActivate: [AuthGuard] },
+  { path: "vacunar", component: VacunarComponent, canActivate: [AuthGuard] },
+  { path: "history", component: HistoryComponent, canActivate: [AuthGuard] },
+  {
+    path: "existencia",
+    component: ExistenciaComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: "registro", component: RegistroComponent, canActivate: [AuthGuard] },
   { path: "", redirectTo: "login", pathMatch: "full" },
 ];
 

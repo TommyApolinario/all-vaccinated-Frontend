@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { IVacunasV } from "./interfaces/vacunas.interface";
+import { VacunarService } from "./vacunar.service";
 import {
   NgbDate,
   NgbCalendar,
@@ -27,26 +29,15 @@ export class VacunarComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     calendar: NgbCalendar,
-    private fbuil: FormBuilder
+    private fbuil: FormBuilder,
+    private listvacunas: VacunarService
   ) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), "d", 10);
   }
   vacunarUsuarioFrom: FormGroup = this.fbuil.group({});
-  public listaVacunar = [
-    {
-      id: 1,
-      descripcion: "ecu",
-    },
-    {
-      id: 2,
-      descripcion: "USA",
-    },
-    {
-      id: 3,
-      descripcion: "titi",
-    },
-  ];
+
+  listaVacuna: IVacunasV[] = [];
 
   public Vacunador = [
     {
@@ -152,5 +143,11 @@ export class VacunarComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.listvacunas.RecibirVacuna().subscribe((Vacunas) => {
+      if (Vacunas) {
+        this.listaVacuna = Vacunas;
+      }
+    });
+  }
 }

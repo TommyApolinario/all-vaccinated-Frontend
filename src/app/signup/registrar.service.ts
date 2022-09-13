@@ -5,7 +5,7 @@ import { map } from "rxjs";
 import { ISignup } from "./interfaces/registrar.interface";
 import Swal from "sweetalert2";
 import { Router } from "@angular/router";
-import { environment } from "src/environments/environment";
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: "root",

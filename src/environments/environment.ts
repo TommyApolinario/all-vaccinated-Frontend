@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlAdress: "http://localhost",
+  urlAdress: "https://all-vaccinated.herokuapp.com",
 };
 
 /*

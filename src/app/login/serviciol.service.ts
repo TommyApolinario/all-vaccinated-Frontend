@@ -2,67 +2,68 @@ import { query } from "@angular/animations";
 import { HttpClient } from "@angular/common/http";
 import { Injectable, Query } from "@angular/core";
 import { Router } from "@angular/router";
-import { map, of, switchMap } from "rxjs";
+import { map, of, switchMap, Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import Swal from "sweetalert2";
-import { ILogin } from "./interfaces/login.interface";
+import { ILogin, ResponseLoginI } from "./interfaces/login.interface";
+import { LocalServiceService } from "../shared/services/local-service/local-service.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class ServiciolService {
-  constructor(private http: HttpClient, private _router: Router) {}
+  private authenticated: boolean = false;
 
-  set token(token: string) {
-    localStorage.setItem("token", token);
-  }
+  constructor(
+    private http: HttpClient,
+    private _router: Router,
+    private localService: LocalServiceService
+  ) {}
 
-  get token(): string {
-    return localStorage.getItem("token") ?? "";
-  }
-
-  IniciarSesion(Credenciales: ILogin) {
-    this.http
-      .post<any>(`${environment.urlAdress}/api/auth/login`, Credenciales, {
-        observe: "response",
-      })
-      .pipe(
-        map((data) => {
-          console.log("Here will be return response code Ex :200", data.status);
-
-          if (data.status === 201) {
-          }
-          return data.status;
-        })
+  IniciarSesion(Credenciales: ILogin): Observable<ResponseLoginI> {
+    return this.http
+      .post<ResponseLoginI>(
+        `${environment.urlAdress}/api/auth/login`,
+        Credenciales
       )
-      .subscribe(
-        (resp) => {
-          console.log(resp);
-          this._router.navigate(["home"]);
-        },
-        (err) => {
-          console.log("status code--->" + err.status);
-
-          if (err.status === 404) {
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Usuario Inexistente!",
-              footer: '<a href="">Comprueba que el usuario este creado</a>',
-            });
-            console.log("usuario no encontrado");
+      .pipe(
+        switchMap((response) => {
+          if (response.success) {
+            this.localService.setJsonLS("token", response.token);
+            this.authenticated = true;
+          } else {
+            this.authenticated = false;
           }
 
-          if (err.status === 401) {
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Contraseña incorrecta!",
-              footer: '<a href="">Comprueba la constraseña</a>',
-            });
-            console.log("usuario no encontrado");
-          }
-        }
+          return of(response);
+        })
       );
+  }
+
+  checkAunthenticated(): Observable<boolean> {
+    if (this.authenticated) {
+      return of(true);
+    }
+
+    if (!this.localService.getJsonLS("token")) {
+      return of(false);
+    }
+
+    return of(true);
+  }
+
+  /**
+   * Sign out
+   */
+  signOut(): Observable<any> {
+    // Remove the access token from the local storage
+    this.localService.clearLS();
+    // localStorage.removeItem('accessToken');
+
+    // Set the authenticated flag to false
+    this.authenticated = false;
+
+    // Return the observable
+    return of(true);
   }
 }
